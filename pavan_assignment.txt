@@ -1,0 +1,12 @@
+select cust_code, cust_lname, 
+from customers ct
+where exists (select 1 from invoice it
+where ct.cust_code = it.cust_code)
+
+select cust_code, cust_lname, 849||cust_phone "phone number"
+from customers
+
+select cust_code, inv_no, inv_date, inv_subtotal
+from invoice
+where inv_subtotal > 100 and 
+cust_code in (10011, 10012) 
